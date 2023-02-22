@@ -4,25 +4,29 @@ namespace DynamicArray
 {
     class Program
     {
+
         static void Main(string[] args)
         {
-            int sizeArray = 1;
+            int sizeArray = 0;
             int[] array = new int[sizeArray];
-            int[] tempArray = new int[array.Length + 1];
-            string userInput = "";
+            string userInput;
             string textSum = "sum";
             string exit = "exit";
             int numbers;
             int sum = 0;
+            bool isExit = true;
+      
+            Console.WriteLine($"Введите целое число. Введите {textSum} для сложения. Bведите {exit} для выходы из программы \n");
 
-            Console.WriteLine($"Введите целое число. Введите {textSum} для сложения. Bведите {exit} для выходы из программы \n") ;
-
-            while (userInput != exit)
+            while (isExit)
             {
                 Console.WriteLine("eneter number,sum or exit");
-
+                
                 userInput = Console.ReadLine();
+                Console.Clear();
+
                 int.TryParse(userInput, out numbers);
+                int[] tempArray = new int[array.Length + 1];
 
                 for (int i = 0; i < array.Length; i++)
                 {
@@ -31,16 +35,28 @@ namespace DynamicArray
 
                 tempArray[tempArray.Length - 1] = numbers;
                 array = tempArray;
+        
+                for (int i = 0; i < array.Length; i++)
+                {
+                    sum += array[i];  
+                }
 
                 for (int i = 0; i < array.Length; i++)
                 {
-                    sum += array[i];
+                    Console.Write(array[i]);
                 }
+
+                Console.WriteLine();
 
                 if (userInput == textSum)
                 {
-                    Console.WriteLine(sum);
+                    Console.WriteLine(sum); 
                 }
+
+                else if (userInput == exit)
+                {
+                    isExit = false;
+                } 
             }
         }
     }

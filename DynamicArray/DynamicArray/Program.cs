@@ -13,22 +13,15 @@ namespace DynamicArray
             string exit = "exit";
             int numbers;
             int sum = 0;
-            bool isExit = true;
+            bool isWork = true;
 
             Console.WriteLine($"Введите целое число. Введите {textSum} для сложения. Bведите {exit} для выходы из программы \n");
 
-            while (isExit)
+            while (isWork)
             {
                 Console.WriteLine("eneter number,sum or exit");
                 userInput = Console.ReadLine();
                
-                Console.Clear();
-
-                for (int i = 0; i < array.Length; i++)
-                {
-                    Console.Write(array[i]);
-                }
-
                 Console.WriteLine();
                 bool isInputResult = int.TryParse(userInput, out numbers);
 
@@ -44,7 +37,7 @@ namespace DynamicArray
                     }
                     else if (userInput == exit)
                     {
-                        isExit = false;
+                        isWork = false;
                     }
                 }
                 else

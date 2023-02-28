@@ -21,7 +21,7 @@ namespace DynamicArray
             {
                 Console.WriteLine("eneter number,sum or exit");
                 userInput = Console.ReadLine();
-               
+
                 Console.WriteLine();
                 bool isInputResult = int.TryParse(userInput, out numbers);
 
@@ -33,11 +33,16 @@ namespace DynamicArray
                         {
                             sum += array[i];
                         }
+
                         Console.WriteLine(sum);
                     }
                     else if (userInput == exit)
                     {
                         isWork = false;
+                    }
+                    else if (userInput == "")
+                    {
+                        continue;
                     }
                 }
                 else

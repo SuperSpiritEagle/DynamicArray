@@ -23,29 +23,23 @@ namespace DynamicArray
                 userInput = Console.ReadLine();
 
                 Console.WriteLine();
-                bool isInputResult = int.TryParse(userInput, out numbers);
+                int.TryParse(userInput, out numbers);
 
-                if (isInputResult != true)
+                if (userInput == textSum)
                 {
-                    if (userInput == textSum)
+                    for (int i = 0; i < array.Length; i++)
                     {
-                        for (int i = 0; i < array.Length; i++)
-                        {
-                            sum += array[i];
-                        }
-
-                        Console.WriteLine(sum);
+                        sum += array[i];
                     }
-                    else if (userInput == exit)
-                    {
-                        isWork = false;
-                    }
-                    else if (userInput == "")
-                    {
-                        continue;
-                    }
+                    
+                    Console.WriteLine(sum);
+                    sum = 0;
                 }
-                else
+                else if (userInput == exit)
+                {
+                    isWork = false;
+                }
+                else if (userInput != textSum && userInput != exit && userInput != "")
                 {
                     int[] tempArray = new int[array.Length + 1];
 

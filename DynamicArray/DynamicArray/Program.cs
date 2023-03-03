@@ -5,51 +5,50 @@ namespace DynamicArray
     class Program
     {
         static void Main(string[] args)
-        {
-            int sizeArray = 0;
-            int[] array = new int[sizeArray];
+        { 
+            int[] numbers = new int[0];
             string userInput;
-            string textSum = "sum";
-            string exit = "exit";
-            int numbers;
-            int sum = 0;
+            string commandSum = "sum";
+            string commandExit = "exit";
+            int number;
             bool isWork = true;
 
-            Console.WriteLine($"Введите целое число. Введите {textSum} для сложения. Bведите {exit} для выходы из программы \n");
+            Console.WriteLine($"Введите целое число. Введите {commandSum} для сложения. Bведите {commandExit} для выходы из программы \n");
 
             while (isWork)
             {
-                Console.WriteLine("eneter number,sum or exit");
+                Console.WriteLine($"eneter number,{commandSum} or {commandExit}");
                 userInput = Console.ReadLine();
 
                 Console.WriteLine();
-                int.TryParse(userInput, out numbers);
+                int.TryParse(userInput, out number);
 
-                if (userInput == textSum)
+                if (userInput == commandSum)
                 {
-                    for (int i = 0; i < array.Length; i++)
+                    int sum = 0;
+
+                    for (int i = 0; i < numbers.Length; i++)
                     {
-                        sum += array[i];
+                        sum += numbers[i];
                     }
                     
-                    Console.WriteLine(sum);
-                    sum = 0;
+                    Console.WriteLine(sum); 
                 }
-                else if (userInput == exit)
+                else if (userInput == commandExit)
                 {
                     isWork = false;
                 }
-                else if (userInput != textSum && userInput != exit && userInput != "")
+                else
                 {
-                    int[] tempArray = new int[array.Length + 1];
+                    int[] tempArray = new int[numbers.Length + 1];
 
-                    for (int i = 0; i < array.Length; i++)
+                    for (int i = 0; i < numbers.Length; i++)
                     {
-                        tempArray[i] = array[i];
+                        tempArray[i] = numbers[i];
                     }
 
-                    tempArray[tempArray.Length - 1] = numbers;
-                    array = tempArray;
+                    tempArray[tempArray.Length - 1] = number;
+                    numbers = tempArray;
                 }
             }
         }
